@@ -35,7 +35,6 @@ namespace ConsoleApplication1
             {
                 Console.WriteLine("try"); 
                 connection.Open();
-                Console.WriteLine("try2"); 
             }
             catch( Exception e )
             {
