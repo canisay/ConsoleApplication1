@@ -12,6 +12,9 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World");
+            printArgs(args);
+            arrayStuff();
+
 
             string connectionProperties = "Server=RICH-MAC\\SQLEXPRESS;Database=testdb;Trusted_Connection=true;";
 
@@ -24,24 +27,43 @@ namespace ConsoleApplication1
             myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
-                Console.WriteLine(myReader["id"].ToString());
+                Console.WriteLine("ID from db:" + myReader["id"].ToString());
             }
         }
 
         private static void connect( SqlConnection connection )
         {
-            Console.WriteLine("called"); 
             try
             {
-                Console.WriteLine("try"); 
                 connection.Open();
             }
             catch( Exception e )
             {
                 Console.WriteLine("exception caught"); 
                 Console.WriteLine(e.ToString());
-                Environment.Exit(0);
             }
+        }
+
+        private static void printArgs(string[] args)
+        {
+           Console.WriteLine("Number of command line parameters = {0}",args.Length);
+           foreach (string s in args)
+           {
+                Console.WriteLine(s);
+           }
+        }
+
+        private static void arrayStuff()
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+
+            int[,] numbersM = { { 9, 99 }, { 3, 33 }, { 5, 55 } };
+
+            foreach (int i in numbersM)
+            {
+                Console.Write(i);
+            }
+
         }
 
     }
